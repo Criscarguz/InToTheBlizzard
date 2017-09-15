@@ -110,8 +110,16 @@ guildSelect.change( function(){
 
 })
 
+$('.batalla').on('click', function holis (a) {
 var achievements = parseInt($('.achievements').text().match(/\d+/)[0])
 var achievementsMember = parseInt($('.achievementsMember').text().match(/\d+/)[0])
 var kills = parseInt($('.kills').text().match(/\d+/)[0])
 var memberKills = parseInt($('.memberKills').text().match(/\d+/)[0])
+if (achievements > achievementsMember){
+	$('.asd').append ("<p>hola</p>")
 
+}else {
+	$('.asd').append ("<p>adios</p>")
+
+}
+})

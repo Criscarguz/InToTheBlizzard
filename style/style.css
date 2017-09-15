@@ -1,0 +1,82 @@
+.wow{
+	background: url(/img/wowbackground.jpg);
+	background-size: cover;
+}
+.d3{
+	background: url(/img/d3background.jpg);
+	background-size: cover;
+}
+.hearthstone{
+	background: url(/img/hearthbackground.jpg);
+	background-size: cover;
+}
+.pageTittle{
+	color: white;
+	float: left;
+	margin-left: 40%;
+}
+.generalInput{
+	border-radius: 5px;
+	border: 1px solid #ddd;
+	width: 50%;
+	height: 2.75em;
+	padding:1em;
+	margin: 1em 0.5em;
+	margin-left: 10%;
+}
+.buttons{
+	border-radius: 5px;
+	border: 1px solid #ddd;
+	height: 2.75em;
+	margin: 1em 1em;
+	width: 10%;
+}
+.generalSelect{
+	border-radius: 5px;
+	border: 1px solid #ddd;
+	height: 2.75em;
+	padding: 0.75em;
+	margin: 1em 0.5em;
+	width: 10%;
+}
+.character{
+	border-radius: 5px;
+	border: 1px solid #ddd;
+	text-align: center;
+	float: left;
+	margin-left: 10%;
+	background-color:#3C884C;
+	width: 450px;
+}
+.guild{
+	border-radius: 5px;
+	border: 1px solid #ddd;
+	text-align: center;
+	float: right;
+	margin-right: 10%;
+	background-color: #495288;
+	width: 450px;
+}
+
+.logod3 {
+	height: 50px;
+	width: 50px;
+	float: right;
+	margin-right: 3%;
+}
+.logohearth {
+	height: 50px;
+	width: 50px;
+	float: right;
+	margin-right: 3%;
+}
+.logowow {
+	height: 50px;
+	width: 50px;
+	float: right;
+	margin-right: 3%;
+}
+.header {
+	height: 50px;
+	text-align: center;
+}

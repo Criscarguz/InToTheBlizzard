@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Into the Blizzard</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style/style.css">
+
+</head>
+<body class="wow">
+	<div>
+		<div class="header">
+			<h2 class="pageTittle">Into the blizzard</h2>
+			<a href="d3index.html"><img src="img/d3logo.png" alt="Diablo 3" class="logod3"></a>
+			<a href="hearthstoneindex.html" ><img src="img/hearthstonelogo.png" alt="Hearthstone" class="logohearth"></a>
+			<a href="index.html"><img src="img/wowlogo.png" alt="World of Warcraft" class="logowow"></a>
+		</div class="header">
+
+
+		<div>
+			<form class="mainSearch">
+				<input type="text" name="name" class="generalInput" />
+				<select name="select" class="generalSelect">
+				  <option value="C'thun">C'thun</option> 
+				  <option value="Colinas Pardas">Colinas Pardas</option>
+				  <option value="Dun Modr">Dun Modr</option>
+				  <option value="Exodar">Exodar</option> 
+				  <option value="Los Errantes">Los Errantes</option>
+				  <option value="Minahonda">Minahonda</option>
+				  <option value="Sanguino">Sanguino</option> 
+				  <option value="Shen'dralar">Shen'dralar</option>
+				  <option value="Tyrande">Tyrande</option>
+				  <option value="Uldum">Uldum</option> 
+				  <option value="Zul'jin">Zul'jin</option>
+				</select>
+				<button class="generalButton searchButton buttons">Buscar</button>
+				<button class='guildButton buttons'>Guild Members</button>
+			</form>
+		</div>	
+		<div class="col-s10">
+			<div class="character">
+				<h2>Tu personaje:</h2>
+				<div class="results">
+				</div>
+			</div>
+
+			<div class="guild">
+				<h2>Miembros de tu hermandad:</h2>
+				<select class="guildMembers">	
+				</select>
+				<div class="memberResult">
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/intoTheBlizzard.js"></script>
+</body>
+</html>

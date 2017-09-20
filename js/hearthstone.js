@@ -32,7 +32,7 @@ function signIn(){
 	  // The signed-in user info.
 	  user = result.user;
 	  // ...
-	  showWelcome()
+	  // showWelcome()
 	}).catch(function(error) {
 	  // Handle Errors here.
 	  var errorCode = error.code
@@ -53,13 +53,13 @@ function showWelcome(){
 	$('#mydeck').show()
 	readUserData()
 	console.log("Usuario",user)
-	alert('Bienvenido '+ user.displayName)
 }
 function logout (){
 
 	firebase.auth().signOut().then(function() {
 
-		$('#deck').empty()
+		$('.profileImg').remove()
+		$('.userName').remove()
 		$('.sign').show()
 		$('.logout').hide()
 		$('#mydeck').hide()
@@ -338,17 +338,20 @@ function readUserData(){
 	})
 }
 function updateMyDeck() {
-		let mydeck = $('#mydeck')
-		mydeck.empty()
-		let optionDeck = document.createElement("option")
-  		mydeck.append(optionDeck)
-  		for(let key in deckUserSession) {
+	$('.deckSelect').append("<h5 class= 'userName'>"+user.displayName+"</h5>")
+	$('.deckSelect').append("<img class ='profileImg'src='"+user.photoURL+"'/>")
+
+	let mydeck = $('#mydeck')
+	mydeck.empty()
+	let optionDeck = document.createElement("option")
+	mydeck.append(optionDeck)
+	for(let key in deckUserSession) {
  			let optionDeck = document.createElement("option")
   			optionDeck.value = deckUserSession[key].name
   			optionDeck.innerText = deckUserSession[key].name
   			optionDeck.data = deckUserSession[key]
   			mydeck.append(optionDeck)
-  		}
+  	}
 }
 
 	// GENERAR ID AUTOMATICAMENTE

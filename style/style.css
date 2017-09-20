@@ -131,6 +131,7 @@
 }
 #deck{
 	width: 15%;
+	margin-top: 10%;
 	margin-left: 85%;
 	background-color: #c3ce9c;
 	text-align: center;
@@ -151,8 +152,8 @@
 	text-align: center;
 	position: fixed;
     width: 290px;
-    height: 60px;
-    margin-top: 28%;
+    height: 200px;
+    margin-top: -2%;
     margin-left: 85%;
     border-radius: 5px;
     background: #c3ce9c;
@@ -165,11 +166,25 @@
     margin: 1em 1em;
     width: 10%;
 }
+.profileImg{
+	margin-top: 25px;
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+}
+.userName{
+    position: fixed;
+	width: 280px;
+}
 .hidden{
 	display: none;	
 }
 
 #mydeck{
+/*	margin-top: 45%;
+    margin-right: 5%;
+    position: relative;*/
 	width: 280px;
+	margin:2%;
 	border-radius: 10px;
 }

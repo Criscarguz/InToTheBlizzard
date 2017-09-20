@@ -10,12 +10,13 @@
 <body class="wow">
 	<div>
 		<div class="header">
-			<h2 class="pageTittle">Into the blizzard</h2>
-			<a href="d3index.html"><img src="img/d3logo.png" alt="Diablo 3" class="logod3"></a>
+			<button class="sign" onclick="signIn()">Sign in with Google</button>
+			<img src="img/captura.png" class="pageTittle" alt="logo"/>
+<!-- 		<h2 class="pageTittle col-5">Into the blizzard</h2> -->			
 			<a href="hearthstoneindex.html" ><img src="img/hearthstonelogo.png" alt="Hearthstone" class="logohearth"></a>
 			<a href="index.html"><img src="img/wowlogo.png" alt="World of Warcraft" class="logowow"></a>
 		</div class="header">
-
+	
 
 		<div>
 			<form class="mainSearch">
@@ -37,6 +38,7 @@
 				<button class='guildButton buttons'>Guild Members</button>
 			</form>
 		</div>	
+
 		<div class="col-s10">
 			<div class="character">
 				<h2>Tu personaje:</h2>
@@ -44,7 +46,7 @@
 				</div>
 			</div>
 
-			<div class="guild">
+			<div class="guild hidden">
 				<h2>Miembros de tu hermandad:</h2>
 				<select class="guildMembers">	
 				</select>
@@ -52,11 +54,24 @@
 				</div>
 			</div>
 		</div>
-		<div class="asd">
-			<button onClick="holis" class="batalla">batalla</button>
-		</div>
+
 	</div>
+	<script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js">
+	</script>
+	<script>
+  		// Initialize Firebase
+  		var config = {
+		    apiKey: "AIzaSyDmkxCIVnOIzMJKsCS8JOaTAA2FVp-5NTE",
+		    authDomain: "into-the-blizzard.firebaseapp.com",
+		    databaseURL: "https://into-the-blizzard.firebaseio.com",
+		    projectId: "into-the-blizzard",
+		    storageBucket: "",
+		    messagingSenderId: "455638190907"
+	 	 };
+  		firebase.initializeApp(config);
+	</script>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/intoTheBlizzard.js"></script>
+	<script src="js/login.js"></script>
 </body>
 </html>

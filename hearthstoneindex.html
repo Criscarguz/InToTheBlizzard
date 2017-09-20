@@ -5,20 +5,67 @@
 	<title>Into the Blizzard</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 	<link rel="stylesheet" href="style/style.css">
+	<link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
 
 </head>
-<body class="hearthstone">
+
+<body class="hearthstone" onload="onload()">
 	<div>
-		<div class="header">
-			<h2 class="pageTittle">Into the blizzard</h2>
-			<a href="d3index.html"><img src="img/d3logo.png" alt="Diablo 3" class="logod3"></a>
+		<div class="header col-12">
+			<button class="sign" onclick="signIn()">Sign in with Google</button>
+			<button class="logout" onclick="logout()">Logout!</button>
+			<img src="img/captura.png" class="pageTittle" alt="logo"/>
+<!-- 		<h2 class="pageTittle col-5">Into the blizzard</h2> -->			
 			<a href="hearthstoneindex.html" ><img src="img/hearthstonelogo.png" alt="Hearthstone" class="logohearth"></a>
 			<a href="index.html"><img src="img/wowlogo.png" alt="World of Warcraft" class="logowow"></a>
-		</div class="header">
+	</div class="header">
+	<form class="mainSearch col-12">
+		<input type="text" name="name" class="generalInput" />
+		<button class="generalButton searchButton buttons">Buscar</button>
+		<select name="classes" class="selectClass">
+		  <option value="Mage">Mago</option> 
+		  <option value="Paladin">Paladín</option>
+		  <option value="Rogue">Pícaro</option>
+		  <option value="Hunter">Cazador</option> 
+		  <option value="Druid">Druida</option>
+		  <option value="Warlock">Brujo</option>
+		  <option value="Warrior">Guerrero</option> 
+		  <option value="Shaman">Chamán</option>
+		  <option value="Priest">Sacerdote</option>
+		</select>
+	</form>
+
+	<div class="hs-content row">
+		<div class="results col-10 row">		
+		</div>
+		<div id="deck">
+		</div>
+		<div class="deckSelect">
+		<h4>Mazos del jugador:</h4>
+			<select class="hidden" name="deck" id="mydeck">
+				<option value="0" selected>Elige tu mazo</option>
+			</select>
+		</div>	
+
+	</div>
 
 
-
+	
+	<script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+	<script>
+  		// Initialize Firebase
+  		var config = {
+		    apiKey: "AIzaSyDmkxCIVnOIzMJKsCS8JOaTAA2FVp-5NTE",
+		    authDomain: "into-the-blizzard.firebaseapp.com",
+		    databaseURL: "https://into-the-blizzard.firebaseio.com",
+		    projectId: "into-the-blizzard",
+		    storageBucket: "",
+		    messagingSenderId: "455638190907"
+	 	 };
+  		firebase.initializeApp(config);
+	</script>
 	<script src="js/jquery.min.js"></script>
-	<script src="js/intoTheBlizzard.js"></script>
+	<script src="js/hearthstone.js"></script>
 </body>
 </html>

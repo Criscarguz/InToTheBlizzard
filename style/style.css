@@ -1,6 +1,7 @@
 .wow{
 	background: url(/img/wowbackground.jpg);
 	background-size: cover;
+	opacity: 0.9;
 }
 .d3{
 	background: url(/img/d3background.jpg);
@@ -8,28 +9,54 @@
 }
 .hearthstone{
 	background: url(/img/hearthbackground.jpg);
-	background-size: cover;
+	background-size: inherit;
+}
+.sign{
+	display: inline-block;
+	margin:10px;
+    background: #ddd;
+    width: 220px;
+    border-radius: 5px;
+    border: thin solid #888;
+    box-shadow: 1px 1px 1px grey;
+	float: left;
+}
+.logout{
+	display: inline-block;
+	margin:10px;
+    background: #ddd;
+    width: 220px;
+    border-radius: 5px;
+    border: thin solid #888;
+    box-shadow: 1px 1px 1px grey;
+	float: left;
 }
 .pageTittle{
-	color: white;
-	float: left;
-	margin-left: 40%;
+	margin: 10px;
+	margin-right: 4%;
+	border-radius: 40px;
+    opacity: 0.8;
+    height: 60px;
 }
 .generalInput{
 	border-radius: 5px;
 	border: 1px solid #ddd;
-	width: 50%;
+	width: 42%;
 	height: 2.75em;
 	padding:1em;
-	margin: 1em 0.5em;
+	margin: 2em 0.5em;
 	margin-left: 10%;
 }
 .buttons{
-	border-radius: 5px;
-	border: 1px solid #ddd;
+    border-radius: 5px;
+    border: thin solid #888;
+    box-shadow: 1px 1px 1px grey;
 	height: 2.75em;
 	margin: 1em 1em;
 	width: 10%;
+}
+.mainSearch{
+	text-align: center;
 }
 .generalSelect{
 	border-radius: 5px;
@@ -58,19 +85,15 @@
 	width: 450px;
 }
 
-.logod3 {
-	height: 50px;
-	width: 50px;
-	float: right;
-	margin-right: 3%;
-}
 .logohearth {
 	height: 50px;
 	width: 50px;
 	float: right;
+	margin:10px;
 	margin-right: 3%;
 }
 .logowow {
+	margin: 10px;
 	height: 50px;
 	width: 50px;
 	float: right;
@@ -79,4 +102,74 @@
 .header {
 	height: 50px;
 	text-align: center;
+}
+.hs-content{
+	vertical-align: center;	
+    display: flex;
+    flex-direction: row;
+}
+.hscard{
+	display: flex;
+    flex-direction: column;
+}
+.hscard .title{
+	background-color: transparent;
+    text-align: center;
+    color: white;
+}
+.hscard div{
+	margin:auto;
+}
+.hscard button{
+	width: 50%;
+	margin:auto;
+}
+.result{
+	background-color: black;
+	width: 80%;
+	height: 100%;
+}
+#deck{
+	width: 15%;
+	margin-left: 85%;
+	background-color: #c3ce9c;
+	text-align: center;
+	position: fixed;
+	padding-top: 1em;
+	border-radius: 8px;
+	border-color: #4971af;
+}
+#deck.background{
+	opacity: 0.5;
+}
+.saveDeck, .deletedeck{
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.deckSelect{
+	text-align: center;
+	position: fixed;
+    width: 290px;
+    height: 60px;
+    margin-top: 28%;
+    margin-left: 85%;
+    border-radius: 5px;
+    background: #c3ce9c;
+}
+.selectClass{
+	border-radius: 5px;
+    border: thin solid #888;
+    box-shadow: 1px 1px 1px grey;
+    height: 2.75em;
+    margin: 1em 1em;
+    width: 10%;
+}
+.hidden{
+	display: none;	
+}
+
+#mydeck{
+	width: 280px;
+	border-radius: 10px;
 }

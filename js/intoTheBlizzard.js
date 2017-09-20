@@ -1,8 +1,38 @@
-var searchButton = $('.searchButton')
-var guildButton = $('.guildButton')
-var guildMembersSelect = $('.guildMembers')
-var guildSelect = $('.guildMembers')
+let searchButton = $('.searchButton')
+let guildButton = $('.guildButton')
+let guildMembersSelect = $('.guildMembers')
+let guildSelect = $('.guildMembers')
+let provider = new firebase.auth.GoogleAuthProvider()
+let user
 
+
+
+	// SIGN IN INTO GOOGLE
+function signIn(){
+	firebase.auth().signInWithPopup(provider).then(function(result) {
+	  // This gives you a Google Access Token. You can use it to access the Google API.
+	  var token = result.credential.accessToken;
+	  // The signed-in user info.
+	  user = result.user;
+	  // ...
+	  showWelcome();
+	}).catch(function(error) {
+	  // Handle Errors here.
+	  var errorCode = error.code;
+	  var errorMessage = error.message;
+	  // The email of the user's account used.
+	  var email = error.email;
+	  // The firebase.auth.AuthCredential type that was used.
+	  var credential = error.credential;
+	  // ...
+	});
+
+}
+
+function showWelcome(){
+	$('.sign').hide()
+	alert('Bienvenido '+ user.displayName)
+}
 
 	//FUNCION CLICK EN BUSCAR
 
@@ -10,8 +40,8 @@ searchButton.on('click', function(event){
 
 	event.preventDefault()
 
-	var mainInput = $('.generalInput').val()
-	var mainSelect = $('.generalSelect').val()
+	let mainInput = $('.generalInput').val()
+	let mainSelect = $('.generalSelect').val()
 
 	$.ajax({
 		url: "https://eu.api.battle.net/wow/character/"+mainSelect+"/"+mainInput+"?fields=guild&locale=es_ES&apikey=kqbhvfayxz65tc8w52p4rh2dwwjqfaj3",
@@ -33,32 +63,37 @@ function error(){
 
 function generalInfo (data){
 
-	var resultsDiv = $('.results')
+	let resultsDiv = $('.results')
 
 	resultsDiv.empty()
 	guildMembersSelect.empty()
 	$('.memberResult').empty()
 
-	var name = ('<h2>' + data.name + '</h2>')
-	var pictureURL = "https://render-api-eu.worldofwarcraft.com/static-render/eu/"
-	var picture = ("<img src="+(pictureURL)+(data.thumbnail)+">")
-	var guild = (data.guild.name)
-	var guildResult = ("<h3>Hermandad:<h3 class='guildName'> "+guild+"</h3></h3>")
-	var honorableKills = ("<h4 class='kills'>Muertes honorables: "+(data.totalHonorableKills)+"</h4>")
-	var logros = ("<h4 class='achievements'>Puntos de logros: "+(data.achievementPoints)+"</h4>")
-
+	let name = ('<h2>' + data.name + '</h2>')
+	let pictureURL = "https://render-api-eu.worldofwarcraft.com/static-render/eu/"
+	let picture = ("<img src="+(pictureURL)+(data.thumbnail)+">")
+	let guild = (data.guild.name)
+	let guildResult = ("<h3>Hermandad:<h3 class='guildName'> "+guild+"</h3></h3>")
+	let honorableKills = ("<h4 class='kills'>Muertes honorables: "+(data.totalHonorableKills)+"</h4>")
+	let logros = ("<h4 class='achievements'>Puntos de logros: "+(data.achievementPoints)+"</h4>")
+ console.log(data)
 	resultsDiv.append(name, picture,guildResult, honorableKills, logros)
+	$(".guild.hidden").removeClass("hidden")
+	getGuildMember();
 
 }
 
 	//FUNCION GUILDMEMBERS
 
-guildButton.on('click', function(event){
+guildButton.on('click',getGuildMember )
 
-	event.preventDefault()
+function getGuildMember(event){
+	if(event){
+		event.preventDefault()
+	}
 
-	var guildName = $(".guildName")[0].innerHTML
-	var mainSelect = $('.generalSelect').val()
+	let guildName = $(".guildName")[0].innerHTML
+	let mainSelect = $('.generalSelect').val()
 
 	$.ajax({
 		url: "https://eu.api.battle.net/wow/guild/"+mainSelect+"/"+guildName+"?fields=members&locale=es_ES&apikey=kqbhvfayxz65tc8w52p4rh2dwwjqfaj3",
@@ -68,13 +103,13 @@ guildButton.on('click', function(event){
 
 	})
 
-})
+}
 
 function guildMembers (data){
 
 	guildMembersSelect.empty()
 
-	for (var i = data.members.length -1; i >= 0; i--) {
+	for (let i = data.members.length -1; i >= 0; i--) {
 
 		if(data.members[i].character.level === 110){
 
@@ -88,21 +123,21 @@ function guildMembers (data){
 
 guildSelect.change( function(){
 
-	var mainSelect = $('.generalSelect').val()
+	let mainSelect = $('.generalSelect').val()
 	guildSelect = $('.guildMembers').val()
 
 
 	$.get("https://eu.api.battle.net/wow/character/"+mainSelect+"/"+guildSelect+"?fields=guild&locale=es_ES&apikey=kqbhvfayxz65tc8w52p4rh2dwwjqfaj3", function (dataV1){
 
-		var memberResult = $('.memberResult')
+		let memberResult = $('.memberResult')
 
 		memberResult.empty()
 
-		var name = ('<h2>' + dataV1.name + '</h2>')
-		var pictureURL = "https://render-api-eu.worldofwarcraft.com/static-render/eu/"
-		var picture = ("<img src="+(pictureURL)+(dataV1.thumbnail)+">")
-		var honorableKills = ("<h4 class='memberKills'>Muertes honorables: "+(dataV1.totalHonorableKills)+"</h4>")
-		var logros = ("<h4 class='memberAchievements'>Puntos de logros: "+(dataV1.achievementPoints)+"</h4>")
+		let name = ('<h2>' + dataV1.name + '</h2>')
+		let pictureURL = "https://render-api-eu.worldofwarcraft.com/static-render/eu/"
+		let picture = ("<img src="+(pictureURL)+(dataV1.thumbnail)+">")
+		let honorableKills = ("<h4 class='memberKills'>Muertes honorables: "+(dataV1.totalHonorableKills)+"</h4>")
+		let logros = ("<h4 class='memberAchievements'>Puntos de logros: "+(dataV1.achievementPoints)+"</h4>")
 
 		memberResult.append(name, picture, honorableKills, logros)
 
@@ -110,16 +145,10 @@ guildSelect.change( function(){
 
 })
 
-$('.batalla').on('click', function holis (a) {
-var achievements = parseInt($('.achievements').text().match(/\d+/)[0])
-var achievementsMember = parseInt($('.achievementsMember').text().match(/\d+/)[0])
-var kills = parseInt($('.kills').text().match(/\d+/)[0])
-var memberKills = parseInt($('.memberKills').text().match(/\d+/)[0])
-if (achievements > achievementsMember){
-	$('.asd').append ("<p>hola</p>")
-
-}else {
-	$('.asd').append ("<p>adios</p>")
+function holis (a) {
+	var achievements = parseInt($('.achievements').text().match(/\d+/)[0])
+	var achievementsMember = parseInt($('.achievementsMember').text().match(/\d+/)[0])
+	var kills = parseInt($('.kills').text().match(/\d+/)[0])
+	var memberKills = parseInt($('.memberKills').text().match(/\d+/)[0])
 
 }
-})

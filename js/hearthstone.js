@@ -13,14 +13,14 @@ function onload() {
 	
 	firebase.auth().onAuthStateChanged(function(userAuth) {
 	  if (userAuth) {
-	    user = userAuth
+	    user = userAuth;
 	    showWelcome()
 	    console.log("USUARIO LOGEADO",user)
 	  } else {
 	  	logout()
 	    console.log("No hay usuario logeado")
 	  }
-	});
+	})
 }
 
 	// SIGN IN INTO GOOGLE
@@ -44,6 +44,8 @@ function signIn(){
 	  // ...
 	});
 
+
+
 }
 
 
@@ -53,6 +55,10 @@ function showWelcome(){
 	$('#mydeck').show()
 	readUserData()
 	console.log("Usuario",user)
+	$('.deckSelect').append("<h5 class= 'userName'>"+user.displayName+"</h5>")
+
+	$('.deckSelect').append("<img class ='profileImg'src='"+user.photoURL+"'/>")
+
 }
 function logout (){
 
@@ -74,7 +80,7 @@ function logout (){
 
 searchButton.on('click', function(event){
 
-	event.preventDefault()
+	event.preventDefault();
 
 	let mainInput = $('.generalInput').val()
 
@@ -86,9 +92,10 @@ searchButton.on('click', function(event){
 		beforeSend: function(xhr) {
 		xhr.setRequestHeader("X-Mashape-Authorization", "RpHXCI5m0AmshwiGOTLAu7oXKqy3p1eQYCwjsn4DHWtcslkAn8")
 		}
-	})
+	});
 
-})
+});
+
 $('#mydeck').on('change',function(){
 	deckSelected =  deckUserSession[this.value].deck
 	showDeck(deckUserSession[this.value].name)
@@ -176,7 +183,7 @@ function cardByClass (data){
 		let addButton= document.createElement("button")
 		addButton.innerText="Añadir al mazo"
 		addButton.classList="btn btn-primary"
-		addButton.data = data[i];
+		addButton.data = data[i]
 		$(addButton).on('click', addCardToDeck)
 		
 		//FILTRO DE CARTAS
@@ -184,7 +191,6 @@ function cardByClass (data){
 		if(data[i].type == "Minion" || data[i].type == "Spell" || data[i].type =="Enchantment" || data[i].type =="Weapon") {
 
 			let name = '<h2 class="title">' + data[i].name+ '</h2>'
-			//let image = '<div><img src="'+data[i].img+'"></div>'
 			let image = new Image()
 			image.onerror = (err) =>{
 				image.src="./img/empty2.png"
@@ -245,7 +251,7 @@ function removeCardFromDeck(){
 			}
 		})
 	}
-	showDeck(nameDeck);
+	showDeck(nameDeck)
 }
 
 	// FUNCION PARA COLOCAR EL MAZO EN EL DIV
@@ -298,7 +304,7 @@ function writeUserData() {
   	signIn()
   	return
   }
-  let uuid = generateUUID();
+  let uuid = generateUUID()
   let classDeck = $(".selectClass").val()
   let name = $("input#nameDeck").val().length==0 ? uuid : $("input#nameDeck").val()
   let newDeck = {
@@ -306,10 +312,14 @@ function writeUserData() {
     name: name,
     id:uuid,
     class:classDeck
-  };
+  }
+    $('#deck').empty()
+
   if(!deckUserSession){
   	deckUserSession ={}
-  }
+  };
+
+
   deckUserSession[name] = newDeck
   firebase.database().ref('deck/' + user.uid+ "/" +name).set(newDeck).then(()=>{alert("Se ha guardado")},(err)=>{alert("No se ha guardado")})
   updateMyDeck()
@@ -338,8 +348,6 @@ function readUserData(){
 	})
 }
 function updateMyDeck() {
-	$('.deckSelect').append("<h5 class= 'userName'>"+user.displayName+"</h5>")
-	$('.deckSelect').append("<img class ='profileImg'src='"+user.photoURL+"'/>")
 
 	let mydeck = $('#mydeck')
 	mydeck.empty()
